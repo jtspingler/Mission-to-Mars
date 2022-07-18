@@ -10,7 +10,6 @@ def scrape_all():
     # Initiate headless driver for deployment
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=True)
-
     news_title, news_paragraph = mars_news(browser)
 
     # Run all scraping functions and store results in a dictionary
@@ -26,10 +25,9 @@ def scrape_all():
     browser.quit()
     return data
 
-
+# Scrape Mars News
 def mars_news(browser):
 
-    # Scrape Mars News
     # Visit the mars nasa news site
     url = 'https://data-class-mars.s3.amazonaws.com/Mars/index.html'
     browser.visit(url)
@@ -51,7 +49,6 @@ def mars_news(browser):
 
     except AttributeError:
         return None, None
-
     return news_title, news_p
 
 
